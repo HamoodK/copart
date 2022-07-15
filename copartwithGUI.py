@@ -78,10 +78,13 @@ def calculation():
     env_fee = 10
     rate = 0.3879
     bid = float(txt.get())
-    total = bid + bidding_fees(bid) + virtual_fees(bid) + gate_fee + env_fee
-    omr = round(total * rate)
-    out.insert(INSERT, ("Total($)= " + str(total) + '\n'))
-    out.insert(INSERT, ("Total(OMR)= " + str(omr) + '\n'))
+    if float(bid):
+        total = bid + bidding_fees(bid) + virtual_fees(bid) + gate_fee + env_fee
+        omr = round(total * rate)
+        out.insert(INSERT, ("Total($)= " + str(total) + '\n'))
+        out.insert(INSERT, ("Total(OMR)= " + str(omr) + '\n'))
+    else:
+        pass
 
 
 window = Tk()
