@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import scrolledtext
+from tkinter import messagebox
+
 
 def bidding_fees(bid):
     if bid >= 15000.00:
@@ -77,14 +79,15 @@ def calculation():
     gate_fee = 79
     env_fee = 10
     rate = 0.3879
-    bid = float(txt.get())
-    if float(bid):
+    try:
+        bid = float(txt.get())
         total = bid + bidding_fees(bid) + virtual_fees(bid) + gate_fee + env_fee
         omr = round(total * rate)
         out.insert(INSERT, ("Total($)= " + str(total) + '\n'))
         out.insert(INSERT, ("Total(OMR)= " + str(omr) + '\n'))
-    else:
-        pass
+    except:
+        messagebox.showinfo("Error", "Input is not Valid. Please enter bid amount in numbers.")
+
 
 
 window = Tk()
